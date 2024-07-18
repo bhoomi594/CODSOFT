@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Calculator</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #287023;
+        font-family: Arial, sans-serif;
+      }
+      .calculator {
+        background-color: #e9c7c7cd;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      #txt1 {
+        width: 160px;
+        height: 40px;
+        font-size: 18px;
+        margin-bottom: 10px;
+        padding: 5px;
+        text-align: right;
+        border-radius: 5px;
+        border: 1px solid #f7efef;
+      }
+      .button {
+        width: 35px;
+        height: 35px;
+        margin: 5px;
+        font-size: 18px;
+        cursor: pointer;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #0a4444;
+        transition: background-color 0.3s;
+      }
+      .button:hover {
+        background-color: #d65d5d;
+      }
+      .button:active {
+        background-color: #a86666;
+      }
+      .button.operator {
+        background-color: #317047;
+        color: #fff;
+      }
+      .button.operator:hover {
+        background-color: #466b05;
+      }
+      .button.clear {
+        background-color: #ff5252;
+        color: #fff;
+      }
+      .button.clear:hover {
+        background-color: #ff1744;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <input type="text" id="txt1" readonly /><br />
+      <button class="button" onclick="funccal('1')">1</button>
+      <button class="button" onclick="funccal('2')">2</button>
+      <button class="button" onclick="funccal('3')">3</button>
+      <button class="button operator" onclick="funccal('+')">+</button><br />
+      <button class="button" onclick="funccal('4')">4</button>
+      <button class="button" onclick="funccal('5')">5</button>
+      <button class="button" onclick="funccal('6')">6</button>
+      <button class="button operator" onclick="funccal('-')">-</button><br />
+      <button class="button" onclick="funccal('7')">7</button>
+      <button class="button" onclick="funccal('8')">8</button>
+      <button class="button" onclick="funccal('9')">9</button>
+      <button class="button operator" onclick="funccal('*')">*</button><br />
+      <button class="button" onclick="funccal('0')">0</button>
+      <button class="button operator" onclick="funccal('/')">/</button>
+      <button class="button operator" onclick="calculate()">=</button>
+      <button class="button clear" onclick="clearInput()">C</button>
+    </div>
+
+    <script>
+      function funccal(value) {
+        const textField = document.getElementById("txt1");
+        textField.value += value;
+      }
+
+      function calculate() {
+        const textField = document.getElementById("txt1");
+        try {
+          textField.value = eval(textField.value) || "";
+        } catch {
+          textField.value = "Error";
+        }
+      }
+
+      function clearInput() {
+        document.getElementById("txt1").value = "";
+      }
+    </script>
+  </body>
+</html>
